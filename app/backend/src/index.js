@@ -7,7 +7,10 @@ const app = express();
 app.use(express.json());
 
 const loginRoutes = require('./routes/login.routes');
+const tasksRoutes = require('./routes/tasks.routes');
 
 app.use('/login', loginRoutes);
+
+app.use('/tasks', tasksRoutes);
 
 app.listen(PORT, () => console.log(`ouvindo porta ${PORT}!`));
