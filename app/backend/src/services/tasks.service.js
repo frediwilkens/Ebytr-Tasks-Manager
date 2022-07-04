@@ -8,4 +8,13 @@ const getTasksService = async () => {
   return { tasks };
 };
 
-module.exports = { getTasksService };
+const createTaskService = async (description, userId) => {
+  const createdTask = await Task.create({ description, status: 'Pendente', userId });
+
+  return createdTask;
+};
+
+module.exports = {
+  getTasksService,
+  createTaskService,
+};

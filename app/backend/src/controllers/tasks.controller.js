@@ -1,4 +1,7 @@
-const { getTasksService } = require('../services/tasks.service');
+const {
+  getTasksService,
+  createTaskService,
+} = require('../services/tasks.service');
 
 const getTasksController = async (req, res) => {
   const tasks = await getTasksService();
@@ -8,4 +11,18 @@ const getTasksController = async (req, res) => {
   return res.status(200).json(tasks);
 };
 
-module.exports = { getTasksController };
+const createTaskController = async (req, res) => {
+  const { description } = req.body;
+  const { userId } = req.user;
+
+  const createdTask = await createTaskService(description, userId);
+
+  if (createdTask.message) return res.status(400).json(createdTask);
+
+  return res.status(201).json(createdTask);
+};
+
+module.exports = {
+  getTasksController,
+  createTaskController,
+};
