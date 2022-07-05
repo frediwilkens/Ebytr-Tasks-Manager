@@ -14,7 +14,22 @@ const createTaskService = async (description, userId) => {
   return createdTask;
 };
 
+const finishTaskService = async (id) => {
+  await Task.update(
+    { status: 'Concluído' },
+    { where: { id } },
+  );
+
+  return { message: 'Tarefa concluída' };
+};
+
+const deleteTaskService = async (id) => {
+  await Task.destroy({ where: { id } });
+};
+
 module.exports = {
   getTasksService,
   createTaskService,
+  finishTaskService,
+  deleteTaskService,
 };
