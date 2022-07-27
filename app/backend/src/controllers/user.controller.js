@@ -19,7 +19,19 @@ const register = async (req, res) => {
   return res.status(201).json(newUserToken);
 };
 
+const update = async (req, res) => {
+  const { email, password } = req.body;
+  const { id } = req.params;
+
+  const updatedUser = await userService.update(id, email, password);
+
+  if (updatedUser.message) return res.status(400).json(updatedUser);
+
+  return res.status(200).json(updatedUser);
+};
+
 module.exports = {
   login,
   register,
+  update,
 };

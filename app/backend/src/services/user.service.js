@@ -21,7 +21,6 @@ const register = async (email, password) => {
   if (validate) return { message: 'Email já cadastrado' };
 
   const newUser = await User.create({ email, password });
-  console.log(newUser.id);
 
   const token = jwt.sign(
     { userId: newUser.id, email },
@@ -32,7 +31,21 @@ const register = async (email, password) => {
   return { token };
 };
 
+const update = async (id, email, password) => {
+  const validate = await User.findOne({ where: { id } });
+
+  if (!validate) return { message: 'Usuário não encontrado' };
+
+  const updatedUser = await User.update(
+    { email, password },
+    { where: { id } },
+  );
+
+  return updatedUser;
+};
+
 module.exports = {
   login,
   register,
+  update,
 };
