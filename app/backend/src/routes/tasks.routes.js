@@ -4,6 +4,7 @@ const { authMiddleware } = require('../middlewares/auth.middleware');
 const { taskValidation } = require('../middlewares/tasks.middleware');
 
 route.get('/', taskControllers.getAll);
+route.get('/:id', taskControllers.getOne);
 route.post('/', authMiddleware, taskValidation, taskControllers.create);
 route.patch('/:id/finish', taskControllers.finish);
 route.delete('/:id', taskControllers.exclude);

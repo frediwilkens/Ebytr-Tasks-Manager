@@ -14,6 +14,21 @@ const getAll = async () => {
   return { tasks };
 };
 
+const getOne = async (id) => {
+  const task = await Task.findOne({
+    where: { id },
+    include: [{
+      model: User,
+      as: 'user',
+      attributes: { exclude: ['password'] },
+    }],
+  });
+
+  if (!task) return { message: 'Tarefa não encontrada' };
+
+  return task;
+};
+
 const create = async (description, userId) => {
   const createdTask = await Task.create({ description, status: 'Pendente', userId });
 
@@ -35,6 +50,7 @@ const exclude = async (id) => {
 
 module.exports = {
   getAll,
+  getOne,
   create,
   finish,
   exclude,
