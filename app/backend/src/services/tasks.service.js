@@ -1,20 +1,45 @@
 const { Task, User } = require('../database/models');
 
-const getTasksService = async () => {
-  const tasks = await Task.findAll({ include: [{ model: User, as: 'user' }] });
+const getAll = async () => {
+  const tasks = await Task.findAll({
+    include: [{
+      model: User,
+      as: 'user',
+      attributes: { exclude: ['password'] },
+    }],
+  });
 
   if (!tasks) return { message: 'Algo deu errado' };
 
   return { tasks };
 };
 
-const createTaskService = async (description, userId) => {
+const getOne = async (id) => {
+  const task = await Task.findOne({
+    where: { id },
+    include: [{
+      model: User,
+      as: 'user',
+      attributes: { exclude: ['password'] },
+    }],
+  });
+
+  if (!task) return { message: 'Tarefa não encontrada' };
+
+  return task;
+};
+
+const create = async (description, userId) => {
   const createdTask = await Task.create({ description, status: 'Pendente', userId });
 
   return createdTask;
 };
 
-const finishTaskService = async (id) => {
+const finish = async (id) => {
+  const foundTask = await Task.findOne({ where: { id } });
+
+  if (!foundTask) return { message: 'Tarefa não encontrada' };
+
   await Task.update(
     { status: 'Concluído' },
     { where: { id } },
@@ -23,13 +48,18 @@ const finishTaskService = async (id) => {
   return { message: 'Tarefa concluída' };
 };
 
-const deleteTaskService = async (id) => {
+const exclude = async (id) => {
+  const foundTask = await Task.findOne({ where: { id } });
+
+  if (!foundTask) return { message: 'Tarefa não encontrada' };
+
   await Task.destroy({ where: { id } });
 };
 
 module.exports = {
-  getTasksService,
-  createTaskService,
-  finishTaskService,
-  deleteTaskService,
+  getAll,
+  getOne,
+  create,
+  finish,
+  exclude,
 };

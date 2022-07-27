@@ -1,48 +1,59 @@
-const {
-  getTasksService,
-  createTaskService,
-  finishTaskService,
-  deleteTaskService,
-} = require('../services/tasks.service');
+const taskService = require('../services/tasks.service');
 
-const getTasksController = async (req, res) => {
-  const tasks = await getTasksService();
+const getAll = async (req, res) => {
+  const tasks = await taskService.getAll();
 
   if (tasks.message) return res.status(400).json(tasks);
 
   return res.status(200).json(tasks);
 };
 
-const createTaskController = async (req, res) => {
+const getOne = async (req, res) => {
+  const { id } = req.params;
+
+  const task = await taskService.getOne(id);
+
+  if (task.message) return res.status(400).json(task);
+
+  return res.status(200).json(task);
+};
+
+const create = async (req, res) => {
   const { description } = req.body;
   const { userId } = req.user;
 
-  const createdTask = await createTaskService(description, userId);
+  const createdTask = await taskService.create(description, userId);
 
   if (createdTask.message) return res.status(400).json(createdTask);
 
   return res.status(201).json(createdTask);
 };
 
-const finishTaskController = async (req, res) => {
+const finish = async (req, res) => {
   const { id } = req.params;
+  const notFound = 'Tarefa não encontrada';
 
-  const finishedTask = await finishTaskService(id);
+  const finishedTask = await taskService.finish(id);
+
+  if (finishedTask.message === notFound) return res.status(400).json(finishedTask);
 
   return res.status(200).json(finishedTask);
 };
 
-const deleteTaskController = async (req, res) => {
+const exclude = async (req, res) => {
   const { id } = req.params;
 
-  await deleteTaskService(id);
+  const excluded = await taskService.exclude(id);
 
-  return res.status(204).json('');
+  if (excluded.message) return res.status(400).json(excluded);
+
+  return res.status(204).end();
 };
 
 module.exports = {
-  getTasksController,
-  createTaskController,
-  finishTaskController,
-  deleteTaskController,
+  getAll,
+  getOne,
+  create,
+  finish,
+  exclude,
 };
