@@ -1,7 +1,13 @@
 const { Task, User } = require('../database/models');
 
 const getAll = async () => {
-  const tasks = await Task.findAll({ include: [{ model: User, as: 'user' }] });
+  const tasks = await Task.findAll({
+    include: [{
+      model: User,
+      as: 'user',
+      attributes: { exclude: ['password'] },
+    }],
+  });
 
   if (!tasks) return { message: 'Algo deu errado' };
 
