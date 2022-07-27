@@ -32,16 +32,15 @@ const register = async (email, password) => {
 };
 
 const update = async (id, email, password) => {
-  const validate = await User.findOne({ where: { id } });
+  const user = await User.findOne({ where: { id } });
 
-  if (!validate) return { message: 'Usuário não encontrado' };
+  if (!user) return { message: 'Usuário não encontrado' };
 
-  const updatedUser = await User.update(
-    { email, password },
-    { where: { id } },
-  );
+  user.email = email;
+  user.password = password;
+  user.save();
 
-  return updatedUser;
+  return user;
 };
 
 const exclude = async (id) => {

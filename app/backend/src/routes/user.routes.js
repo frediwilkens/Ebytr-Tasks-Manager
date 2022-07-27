@@ -10,7 +10,7 @@ route
 route
   .post('/login', emailMiddleware, passwordMiddleware, userController.login);
 route
-  .patch('/:id', userController.update);
+  .put('/:id', emailMiddleware, passwordMiddleware, userController.update);
 route
   .delete('/:id', userController.exclude);
 
