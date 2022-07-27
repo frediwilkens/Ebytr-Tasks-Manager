@@ -31,8 +31,11 @@ const create = async (req, res) => {
 
 const finish = async (req, res) => {
   const { id } = req.params;
+  const notFound = 'Tarefa não encontrada';
 
   const finishedTask = await taskService.finish(id);
+
+  if (finishedTask.message === notFound) return res.status(400).json(finishedTask);
 
   return res.status(200).json(finishedTask);
 };
@@ -40,9 +43,11 @@ const finish = async (req, res) => {
 const exclude = async (req, res) => {
   const { id } = req.params;
 
-  await taskService.exclude(id);
+  const excluded = await taskService.exclude(id);
 
-  return res.status(204).json('');
+  if (excluded.message) return res.status(400).json(excluded);
+
+  return res.status(204).end();
 };
 
 module.exports = {
