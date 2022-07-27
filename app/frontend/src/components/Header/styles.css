@@ -1,0 +1,12 @@
+.header-container {
+  border-bottom: 4px solid #b1c2be;
+  color: #000;
+  display: flex;
+  font-size: xx-large;
+  font-weight: bold;
+  justify-content: center;
+}
+
+.title-middle-letter {
+  color: #008000;
+}

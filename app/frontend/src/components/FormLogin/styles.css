@@ -1,0 +1,26 @@
+.formLoginContainer {
+  background-color: #b1c2be;
+  border: 1px solid #b1c2be;
+  border-radius: 25px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+}
+
+.formEmail > p, .formPassword > p {
+  font-size: larger;
+  margin: 0 0 5px 10px;
+}
+
+
+.formEmail > input, .formPassword > input {
+  border: 1px solid #001813;
+  border-radius: 25px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  height: 50px;
+  outline-color: #b1c2be;
+  text-align: center;
+  width: 250px;
+}
