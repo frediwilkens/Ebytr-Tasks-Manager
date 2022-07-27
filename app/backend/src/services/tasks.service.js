@@ -36,7 +36,7 @@ const create = async (description, userId) => {
 };
 
 const finish = async (id) => {
-  const foundTask = await Task.findOne({ where: id });
+  const foundTask = await Task.findOne({ where: { id } });
 
   if (!foundTask) return { message: 'Tarefa não encontrada' };
 
@@ -49,7 +49,7 @@ const finish = async (id) => {
 };
 
 const exclude = async (id) => {
-  const foundTask = await Task.findOne({ where: id });
+  const foundTask = await Task.findOne({ where: { id } });
 
   if (!foundTask) return { message: 'Tarefa não encontrada' };
 
