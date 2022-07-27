@@ -44,8 +44,17 @@ const update = async (id, email, password) => {
   return updatedUser;
 };
 
+const exclude = async (id) => {
+  const validation = await User.findOne({ where: { id } });
+
+  if (!validation) return { message: 'Usuario não encontrado' };
+
+  await User.destroy({ where: { id } });
+};
+
 module.exports = {
   login,
   register,
   update,
+  exclude,
 };
