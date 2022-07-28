@@ -7,19 +7,21 @@ const Header = ({ user = '', }) => (
     className='header-container'
   >
     { (user === '') ? (
-      <>
+      <div className='title-container'>
         <span>EB</span>
         <span className='title-middle-letter'>Y</span>
         <span>TR</span>
-      </>
+      </div>
     ) : (
       <>
-        <>
+        <div className='title-container'>
           <span>EB</span>
           <span className='title-middle-letter'>Y</span>
           <span>TR</span>
-        </>
-        <span className='user-title'>{user}</span>
+        </div>
+        <div className='user-container'>
+          <span className='user-title'>{user}</span>
+        </div>
       </>
     )}
   </header>

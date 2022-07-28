@@ -2,8 +2,9 @@
   border-bottom: 4px solid #b1c2be;
   color: #000;
   display: flex;
-  font-size: xx-large;
+  font-size: 55px;
   font-weight: bold;
+  height: 11vh;
   justify-content: center;
 }
 
