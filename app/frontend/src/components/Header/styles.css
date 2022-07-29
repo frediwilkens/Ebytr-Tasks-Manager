@@ -1,0 +1,21 @@
+.header-container {
+  align-items: center;
+  border-bottom: 4px solid #b1c2be;
+  color: #000;
+  display: flex;
+  font-weight: bold;
+  height: 11vh;
+  justify-content: space-around;
+}
+
+.title-container {
+  font-size: 55px;
+}
+
+.title-middle-letter {
+  color: #008000;
+}
+
+.user-container {
+  font-size: 35px;
+}
