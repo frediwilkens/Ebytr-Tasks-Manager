@@ -12,7 +12,7 @@ const login = async (email, password) => {
     { expiresIn: '7d', algorithm: 'HS256' },
   );
 
-  return { token };
+  return { token, email, name: validate.name };
 };
 
 const register = async (email, password) => {
@@ -28,7 +28,7 @@ const register = async (email, password) => {
     { expiresIn: '7d', algorithm: 'HS256' },
   );
 
-  return { token };
+  return { token, email, name: newUser.name };
 };
 
 const update = async (id, email, password) => {
