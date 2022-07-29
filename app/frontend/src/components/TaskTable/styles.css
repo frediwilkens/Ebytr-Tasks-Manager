@@ -1,0 +1,43 @@
+.table-task-container {
+  height: 80vh;
+  width: 85vw;
+  margin-left: 7vw;
+  background-color: rgba(9, 76, 46, 0.036);
+  border-radius: 25px;
+}
+
+.table-title {
+  font-size: 40px;
+}
+
+.task-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.task-table th {
+  border-bottom: 1px solid black;
+  height: 5vh;
+}
+
+.task-table td {
+  height: 5vh;
+  font-size: 20px;
+}
+
+.headers-row {
+  font-size: 25px;
+}
+
+.checkbox-table-head {
+  width: 2vw;
+}
+
+.status-table-head {
+  width: 5vw;
+}
+
+.description-table-head {
+  text-align: center;
+  width: 30vw;
+}
