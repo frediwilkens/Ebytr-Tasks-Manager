@@ -44,8 +44,7 @@ const exclude = async (req, res) => {
   const { id } = req.params;
 
   const excluded = await taskService.exclude(id);
-
-  if (excluded.message) return res.status(400).json(excluded);
+  if (excluded !== undefined) return res.status(400).json(excluded);
 
   return res.status(204).end();
 };
