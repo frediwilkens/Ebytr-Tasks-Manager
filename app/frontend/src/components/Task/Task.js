@@ -2,10 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './styles.css';
 
-const Task = ({ selectAll, onChange, description, status }) => (
+const Task = ({ onChange, id, description, status }) => (
   <tr>
     <td>
-      <input type="checkbox" />
+      <input
+        type="checkbox"
+        name={ id }
+        onChange={ (event) => onChange(event) }/>
     </td>
     <td className="task-description">{ description }</td>
     <td>{ status }</td>

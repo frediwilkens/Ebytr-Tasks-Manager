@@ -1,0 +1,13 @@
+.new-task-container {
+  width: 90vw;
+  margin-left: 5vw;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.new-task-input {
+  width: 40%;
+  border: 2px solid rgba(23, 60, 1, 0.516);
+  border-radius: 15px;
+  text-align: center;
+}
