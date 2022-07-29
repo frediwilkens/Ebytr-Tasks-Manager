@@ -3,6 +3,7 @@ const User = (sequelize, DataTypes) => {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     email: DataTypes.STRING,
     password: DataTypes.STRING,
+    name: DataTypes.STRING,
   },
   {
     timestamps: false,
