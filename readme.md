@@ -16,27 +16,25 @@ Back-end:
 
 > Backend
 ```bash
-cd app/backend/ 
-npm install
+  npm run install:backend
 ``` 
 > Frontend
 ```bash
-cd app/frontend
-npm install
+  npm run install:frontend
 ``` 
-## Executando aplicação
+## Executando aplicação com Docker
 
-* Para rodar o back-end:
+### Subindo os containers
+```bash
+  npm run compose:up
+```
 
-  ```
-  cd app/backend && npm start
-  ```
-* Para rodar o front-end:
-
-  ```
-    cd app/frontend && npm start
-  ```
+### Iniciando o Banco de dados:
+```bash
+  npm run db:reset
+```
 
 ## Futuras implementações:
 * Editar descrição de tarefas;
 * Tela de cadastro;
+* Selecionar todas as tarefas em um botão;
