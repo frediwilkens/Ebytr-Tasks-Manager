@@ -1,0 +1,24 @@
+{
+  "name": "ebytr-tasks-manager",
+  "version": "1.0.0",
+  "description": "Inicio do projeto",
+  "main": "index.js",
+  "scripts": {
+    "install:backend": "(cd app && cd backend && npm install)",
+    "install:frontend": "(cd app && cd frontend && npm install)",
+    "compose:up": "(cd app && docker-compose up -d --build)",
+    "compose:down": "(cd app && docker-compose down --remove-orphans)",
+    "db:reset": "docker exec -i app_backend npm run db:reset"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frediwilkens/Ebytr-Tasks-Manager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frediwilkens/Ebytr-Tasks-Manager/issues"
+  },
+  "homepage": "https://github.com/frediwilkens/Ebytr-Tasks-Manager#readme"
+}
