@@ -11,6 +11,9 @@ Front-end:
 Back-end:
 > Desenvolvido usando: NodeJS, ExpressJS, MYSQL, ES6, Sequelize ORM
 
+Extra:
+> Utilizado Docker para criar containers com cada parte da aplicação (DB, Frontend, Baackend)
+
 
 ## Instalando Dependências
 
